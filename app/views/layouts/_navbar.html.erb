@@ -1,58 +1,50 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <h3 <%= active_menu('events') %>><%= link_to ".::Euvou::.", events_path %></h3>
-    </div>
+<nav class="orange darken-4" >
+  <div class="nav-wrapper ">
+    <a <%= active_menu('events') %>><%= link_to ".::Euvou::.", events_path %></a>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="input-group input-group-2">   
-          <input type="text" class="form-control" placeholder="Busque por eventos em sua cidade">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button"><%= fa_icon("search") %></button>
-          </span>
-        </div><!--/input-group -->
-      </div><!-- /.col-lg-6 -->
-       
-      
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <%= current_user.email_verified? ? image_tag(current_user.image) + current_user.name : "Carregando..."   %>
-                <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
-                <b class="caret"></b>
-              </a>
-             
-             
-              <ul class="dropdown-menu" role="menu"> 
-                 <li>
-                    <% if current_user.identities.count == 0  %>
-                    <%= link_to("Editar perfil", edit_user_registration_path) %>
-                    <% else %>
-                      <%= link_to_provider(current_user) %>
-                    <% end %>
-                 </li>
-                 <li class="divider"></li>
-                 <li>
-                  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
-                 </li>  
-              </ul>
+
+    <ul class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+
+
+          <li><a href="badges.html"><%= image_tag current_user.image,class: 'profile_img' %></a></li>
+
+
+
+          <li>
+            <a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>
+              <%= current_user.email_verified? ? current_user.name : "Carregando..."   %>
+
+              <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
+
+
+            </a>
+          </li>
+
+          <!-- Dropdown Structure -->
+          <ul id="dropdown1" class="dropdown-content ">
+
+            <li>
+              <% if current_user.identities.count == 0  %>
+                  <%= link_to("Editar perfil", edit_user_registration_path) %>
+              <% else %>
+                  <%= link_to_provider(current_user) %>
+              <% end %>
             </li>
-          <% else %>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "Login", new_user_session_path %></li>
-              <li><%= link_to "Cadastre-se", new_user_registration_path %></li>
-            </ul>
-          <%end %>
-      </ul>
-    </div>
+            <li class="divider"></li>
+            <li> <%= link_to "Sair", destroy_user_session_path, method: :delete %></li>
+
+          </ul>
+
+
+          <li><%= link_to 'Novo evento', new_event_path, class: "btn btn-default orange darken-3" %></li>
+      <% else %>
+          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "Cadastre-se", new_user_registration_path %></li>
+
+      <%end %>
+    </ul>
+
   </div>
 </nav>
 

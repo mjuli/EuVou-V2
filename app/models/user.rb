@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :events
   rolify
   include Authority::UserAbilities
 
@@ -9,12 +10,14 @@ class User < ActiveRecord::Base
   has_many :identities, dependent: :destroy
 
   after_create :set_default_role, if: Proc.new { User.count > 1 }
+  mount_uploader :image, ImageUploader
 
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   validates_presence_of :name
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -42,10 +45,8 @@ class User < ActiveRecord::Base
         user = User.new(
           name: auth.info.name || auth.extra.nickname ||  auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0,20]
-
-         
-
+          password: Devise.friendly_token[0,20],
+          image: auth.info.image,
         )
         user.skip_confirmation!
         user.save!

@@ -47,13 +47,14 @@ gem 'omniauth-foursquare'
 
 # social sharing
 gem 'social-share-button'
-
+gem 'haml'
 # styles
 gem 'bootswatch-rails' #https://github.com/maxim/bootswatch-rails
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'simple_form_fancy_uploads'
 gem 'country_select'
+gem 'materialize-sass'
 
 #icons
 gem "font-awesome-rails" #https://github.com/bokmann/font-awesome-rails

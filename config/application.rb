@@ -33,6 +33,7 @@ module Euvou
 		
 		config.generators do |g|
    		g.factory_girl dir: 'custom/dir/for/factories'
+      g.template_engine :haml
 		end
   end
 end

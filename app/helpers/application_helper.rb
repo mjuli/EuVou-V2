@@ -35,10 +35,11 @@ module ApplicationHelper
     provider = case provider
     when 'facebook' then link_to(
 			if user == current_user
-				'Ir para o Facebook'
-			else
-				user.name
-			end, 'http://www.facebook.com' )
+        user.name
+      else
+        user.name
+			end, edit_user_registration_path)
+
     when 'twitter' then link_to( if user == current_user
 			'Ir para o Twitter'
 			else
@@ -49,4 +50,5 @@ module ApplicationHelper
     end
 
   end
+
 end

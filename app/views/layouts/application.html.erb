@@ -2,12 +2,22 @@
 <html>
 <head>
  	<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta http--equiv="X-UA-Compatible" content="IE=edge">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <title>Euvou</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+   <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <script  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.7/css/bootstrap-material-design.css"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing">
+</script>
+
 </head>
 <body>
 <script>
@@ -25,8 +35,9 @@
      js = d.createElement(s); js.id = id;
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+   }(document, 'script', 'facebook-jssdk'));  
 </script>
+
 	<%= render "layouts/navbar" %>
 	<!-- contrainer -->
 	<div class="container">
@@ -34,7 +45,13 @@
 		<%= render partial: "shared/flash_messages", flash: flash %>
   
 		<%= yield %>
+		
 	</div> <!-- /container -->
 
 </body>
+<script>
+
+
+</script>
+
 </html>

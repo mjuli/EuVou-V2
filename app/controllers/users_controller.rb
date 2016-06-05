@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, :finish_signup
+  before_action  :set_user, :finish_signup
+
+   def index
+     @users = User.find.all
+   end
 
   def finish_signup
     if request.patch? && params[:user] #&& params[:user][:email]
@@ -13,16 +17,20 @@ class UsersController < ApplicationController
     end
   end
 
-private
-  def set_user
-    @user = User.find(params[:id])
-  end
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def user_params
-    accessible = [ :name, :email ] # extend with your own params
-    accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-    params.require(:user).permit(accessible)
-    params.require(:user).permit(:images)
-  end
+    def show
+      @user = User.find(params[:id])
+    end
+
+    def user_params
+      accessible = [ :name, :email, :image ] # extend with your own params
+      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
+      #params.require(:user).permit(accessible)
+      params.require(:user).permit(:name, :image)
+    end
 
 end

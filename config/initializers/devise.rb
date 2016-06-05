@@ -238,7 +238,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 	config.omniauth :facebook, '1495646454073290', 'a3cbf4a4d6ad63abddb3ddfde34aa6b1'
   config.omniauth :twitter, 'YqbpRLhFqt8Sn0nz5GQVX5ldQ', 'Ggzkeud7jw0oEeSQXq1xul754v9jh2Sbg62U3G9AF28yy7fEVX'
-  #config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+  #config.omniauth :google_oauth2, '276724472150-sh5fbgah1vjqe4gj7o4g5ctgu1i0av0e.apps.googleusercontent.com', 'B-3dfFI4hpSpkQp6HVBWgDjG'
   #config.omniauth :foursquare, ENV["FOURSQUARE_CLIENT_ID"], ENV["FOURSQUARE_CLIENT_SECRET"] 
 	#
   # ==> Warden configuration

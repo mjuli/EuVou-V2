@@ -1,0 +1,30 @@
+<div class="row">
+  <% @events.each do |event| %>
+    <div class="col s4">
+      <div class="card">
+
+        <div class="card-image card_evento waves-effect waves-block waves-light">
+          <span class="data_evento"><%= event.date.time.strftime('%v')%></span>
+          <%= link_to (image_tag event.images.thumb), event, class: 'activator' %>
+        </div>
+
+        <div class="card-content">
+          <span class="card-title activator"><b><%= event.title %></b></span>
+          <p></p>
+          <div class="chip">
+            <%= image_tag event.user.image%>
+            <%= link_to (event.user.name),user_show_path(event.user) %>
+          </div>
+            <span class="activator icon_option"><i class="material-icons right">more_vert</i></span>
+
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
+          <p><%= event.local %></p>
+        </div>
+
+      </div>
+    </div>
+  <%end %>
+
+</div>

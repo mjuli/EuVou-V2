@@ -2,39 +2,38 @@
   <%= f.error_notification %>
 
   <div class="form-group">
-		<%= f.input :title, label: 'Título', input_html: { class: 'form-control' } %>
-  </div>
-  <div class="form-group">
-		<%= f.input :description, label: 'Descrição', input_html: { class: 'form-control' } %>
-  </div>
-  <div class="form-group">
-   
-		<%= f.input :date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, discard_day: false, order: [:day, :month, :year], label: 'Data' %>
+		<%= f.input :title, label: 'Título', class: 'form-control' %>
   </div>
 	<div class="form-group">
-		<%= f.input :street, label: 'Rua', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="form-group">
-		<%= f.input :number, label: 'Número', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="form-group">
-		<%= f.input :district, label: 'Bairro', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="form-group">
-		<%= f.input :zip_code, label: 'CEP', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="form-group">
-		<%= f.input :city, label: 'Cidade', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="for
-	m-group">
-		<%= f.input :estate, label: 'Estado', input_html: { class: 'form-control' } %>
-	</div>
-	<div class="form-group">
-		<%= f.input :country, label: 'País', input_html: { class: 'form-control' } %>
+	  <label for="event_category">Categoria</label>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Escolha uma categoria" },  { class: 'form-control' } %>
 	</div>
   <div class="form-group">
-		<%= f.file_field :images, label: "Adicionar Imagem", accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+    <%= f.input :description, label: 'Descrição', class: 'form-control' %>
   </div>
-  <%= f.button :submit, "Confirmar", class: 'btn btn-default'%>
-<% end %><br>
+  <div class=form-group>
+		<%= f.input :date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, discard_day: false, order: [:day, :month, :year], label: 'Data', class: 'form-control col-md-6' %>
+    <label for="event[image]">Imagem</label>
+		<%= f.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png", class: 'form-control col-md-6' %>
+  </div><br><br>
+  <h5>Endereço</h5>
+	<div class="form-group">
+    <%= f.input :street, label: 'Rua', class: 'form-control' %>
+	</div>
+	<div class="form-group">
+    <%= f.input :number, label: 'Número', class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.input :city, label: 'Cidade', class: 'form-control' %>
+	</div>
+	<div class="form-group">
+    <%= f.input :zip_code, label: 'CEP', class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.input :country, label: 'País', class: 'form-control' %>
+	</div><br><br>
+	<div class="form-group">
+    <%= f.button :submit, "Confirmar", class: 'btn btn-default', style: 'width: 200px; padding:0;' %>
+    <%= link_to 'Cancelar', events_path, class: 'btn btn-secondary', style: 'background-color: #586161;' %>
+	</div>
+<% end %>
