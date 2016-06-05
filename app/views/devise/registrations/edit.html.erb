@@ -24,6 +24,11 @@
   <div class="form-group">
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: 'form-control' } %>
   </div>
+
+  <div class="form-group">
+    <%= f.file_field :images, label: "Adicionar Imagem", accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+  </div>
+  
   <%= f.button :submit, "Update", class: 'btn btn-default' %>
 <% end %>
 

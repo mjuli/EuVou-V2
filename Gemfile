@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -48,10 +49,14 @@ gem 'omniauth-foursquare'
 gem 'social-share-button'
 
 # styles
+gem 'bootswatch-rails' #https://github.com/maxim/bootswatch-rails
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'simple_form_fancy_uploads'
 gem 'country_select'
+
+#icons
+gem "font-awesome-rails" #https://github.com/bokmann/font-awesome-rails
 
 # images
 gem 'rmagick'

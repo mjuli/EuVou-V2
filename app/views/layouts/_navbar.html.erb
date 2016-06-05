@@ -1,53 +1,59 @@
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">#EuVou</a>
+      <h3 <%= active_menu('events') %>><%= link_to ".::Euvou::.", events_path %></h3>
     </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li <%= active_menu('welcome') %>><%= link_to "Home", root_path %></li>
-				<li <%= active_menu('events') %>><%= link_to "Events", events_path %></li>
-      </ul>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="input-group input-group-2">   
+          <input type="text" class="form-control" placeholder="Busque por eventos em sua cidade">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><%= fa_icon("search") %></button>
+          </span>
+        </div><!--/input-group -->
+      </div><!-- /.col-lg-6 -->
+       
+      
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= current_user.email_verified? ? image_tag(current_user.image) + current_user.name : "Carregando..."   %>
-              <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <% if current_user.identities.count == 0  %>
-                  <%= link_to("My Profile", edit_user_registration_path) %>
-                <% else %>
-                  <%= link_to_provider(current_user) %>
-                <% end %>
-              </li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <%= current_user.email_verified? ? image_tag(current_user.image) + current_user.name : "Carregando..."   %>
+                <%= current_user.identities.size == 0 ? "" : "(via " + current_user.identities.map(&:provider).join("/").titleize + ")" %>
+                <b class="caret"></b>
+              </a>
+             
+             
+              <ul class="dropdown-menu" role="menu"> 
+                 <li>
+                    <% if current_user.identities.count == 0  %>
+                    <%= link_to("Editar perfil", edit_user_registration_path) %>
+                    <% else %>
+                      <%= link_to_provider(current_user) %>
+                    <% end %>
+                 </li>
+                 <li class="divider"></li>
+                 <li>
+                  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+                 </li>  
+              </ul>
+            </li>
+          <% else %>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "Login", new_user_session_path %></li>
+              <li><%= link_to "Cadastre-se", new_user_registration_path %></li>
             </ul>
-            <li><%= link_to "Sair", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
-          </li>
-        <% else %>
-          <li class="drowpdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Entre com
-              <b class='caret'></b>
-            </a>
-            <ul class='dropdown-menu'>
-							<li><%= link_to "#EuVou", new_user_session_path %></li>
-              <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %></li>
-              <li><%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %></li>
-            </ul>
-          </li>
-					<li><%= link_to "Cadastre-se", new_user_registration_path %></li>
-        <% end %>
+          <%end %>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
   </div>
-</div>
+</nav>
+
+

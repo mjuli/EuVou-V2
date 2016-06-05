@@ -1,0 +1,93 @@
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0px !important;
+  }
+}
+
+.navbar-header{
+	h3{
+	  margin:10px !important;
+
+	   a{
+		color:#FFF !important;
+		}
+	}
+}
+
+
+::-webkit-input-placeholder {
+   color: orange;
+   font: 12px verdana, arial, sans-serif;
+	}
+
+
+//Search nav
+.input-group-2{
+	width:70%;
+	margin: 5px 0px 0px 0px;
+	color: #BF3E11 !important;
+	
+}
+
+@mixin search-style{
+	background-color: #fff;
+    border: 1px solid #fff;
+    color: #BF3E11 !important;
+  
+}
+
+.input-group-2{
+	.form-control{
+		background-color: #E65725;
+		border: 1px solid rgba(221, 72, 20, 0.75);
+		  color: #BF3E11;
+
+		&:hover{
+           @include search-style
+        }
+
+        &:focus{
+        	 @include search-style
+        }
+
+         &:active{
+        	 @include search-style
+        }
+
+        
+	}
+
+	.btn-default{
+        	background-color: #E65725 !important;
+        	border: none !important;
+    }
+
+}
+
+input,
+textarea {
+    padding: 10px;
+    display: block;
+    width: 70%;
+}
+
+::-webkit-input-placeholder {
+   color:#FFF !important;
+}
+
+:-moz-placeholder {
+   color: #FFF!important;
+  
+}
+
+::-moz-placeholder {
+   color: #FFF !important;  
+ 
+}
+
+:-ms-input-placeholder {  
+   color: #FFF !important;  
+  
+}
+
+	
